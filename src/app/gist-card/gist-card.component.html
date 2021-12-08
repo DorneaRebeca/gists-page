@@ -4,7 +4,9 @@
   </mat-card-title>
   <mat-card-subtitle>{{gist?.url}}</mat-card-subtitle>
   <mat-card-content>
-    <p *ngFor="let file of gistFiles">{{file.filename}}</p>
+    <span>Files in gist </span>
+    <img *ngFor="let ext of extensions" class="bagde" [src]="fileTypeService.getIconLinkForExtension(ext)" alt="**"
+         [matTooltip]="ext" matTooltipPosition="below">
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-button class="mat-primary">Include forks</button>

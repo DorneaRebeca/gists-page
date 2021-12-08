@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {HttpClientModule} from "@angular/common/http";
 import { GistCardComponent } from './gist-card/gist-card.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import {MatCardModule} from "@angular/material/card";
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
