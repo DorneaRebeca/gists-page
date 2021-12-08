@@ -11,12 +11,15 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from "@angular/material/input";
 import {HttpClientModule} from "@angular/common/http";
+import { GistCardComponent } from './gist-card/gist-card.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchGistsComponent
+    SearchGistsComponent,
+    GistCardComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +30,8 @@ import {HttpClientModule} from "@angular/common/http";
     MatFormFieldModule,
     FormsModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

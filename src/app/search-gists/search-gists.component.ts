@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GistsApiService} from "../service/gists-api.service";
-import {userError} from "@angular/compiler-cli/src/transformers/util";
+import {Gist} from "../model/Gist";
 
 @Component({
   selector: 'app-search-gists',
@@ -11,7 +11,7 @@ export class SearchGistsComponent {
 
   public searchUsername?: string;
 
-  public gists: any[] = [];
+  public gists: Gist[] = [];
 
   constructor(private gistsApiService: GistsApiService) { }
 

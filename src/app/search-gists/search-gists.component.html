@@ -7,4 +7,4 @@
 
 <button mat-button type="submit" (click)="searchGists()">Search gists</button>
 <br>
-<p *ngFor="let gist of gists">{{gist.url}}<br></p>
+<app-gist-card *ngFor="let gist of gists" [gist]="gist"></app-gist-card>
