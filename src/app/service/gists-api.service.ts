@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
@@ -7,13 +7,17 @@ import {Observable} from "rxjs";
 })
 export class GistsApiService {
 
-  private BASE_URL: string = 'https://api.github.com/users/';
+  private BASE_URL: string = 'https://api.github.com/';
 
   constructor(private httpClient: HttpClient) { }
 
   public getPublicGistsForUsername(username: string): Observable<any>{
-    let url: string = this.BASE_URL + username + '/gists';
+    let url: string = this.BASE_URL + 'users/'+ username + '/gists';
     return this.httpClient.get(url);
+  }
+
+  public getGistForks(forks_url: string): Observable<any[]> {
+    return this.httpClient.get<any[]>(forks_url);
   }
 
 

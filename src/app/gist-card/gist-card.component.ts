@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Gist} from "../model/Gist";
 import {GistFile} from "../model/GistFile";
 import {FileTypeService} from "../service/file-type.service";
+import {GistsApiService} from "../service/gists-api.service";
 
 @Component({
   selector: 'app-gist-card',
@@ -17,12 +18,13 @@ export class GistCardComponent implements OnInit {
 
   public extensions: string[] = [];
 
+  public avatarInfoForks: { url: any, username: any }[] = [];
 
-
-  constructor(public fileTypeService: FileTypeService) { }
+  constructor(public fileTypeService: FileTypeService, private gistsApiService: GistsApiService) { }
 
   ngOnInit(): void {
     this.initFiles(this.gist);
+    this.initGistForks();
   }
 
   private initFiles(gist?: Gist): void {
@@ -30,6 +32,24 @@ export class GistCardComponent implements OnInit {
       let fileInfo = this.gist?.files[file];
       this.extensions.push(fileInfo.filename.split('.').pop());
     }
+  }
+
+  public initGistForks(): void {
+    this.gistsApiService.getGistForks(this.gist?.forks_url || '')
+    .subscribe( rez =>
+    {
+      let index = 0;
+      for (const fork of rez) {
+        index++;
+        this.avatarInfoForks.push({
+          url: fork.owner.avatar_url,
+          username: fork.owner.login
+        });
+        if(index > 2) {
+          break;
+        }
+      }
+    });
   }
 
 }
