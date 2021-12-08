@@ -22,6 +22,15 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Run App
+
+* Run 'ng serve --open' to start app and access it using http://localhost:4200/search link
+
+## Search gists
+
+Insert username in input field and click button. Example: write 'sumeetpro' in the fiels and click button labeled 'Search gists' \
+ The app wil display each gist in a card with gist description as title and the content will contain all files in gist as badges. If you click on the badge a dialog will be openned with the content of the file as plain text. \
+ If the gist has been forked the list with the last e users avatar forked will be displayed under files list. 
+
+
