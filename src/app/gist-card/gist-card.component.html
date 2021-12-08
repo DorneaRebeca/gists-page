@@ -6,8 +6,8 @@
   <mat-card-content>
     <div>
     <span>Files in gist </span>
-    <img *ngFor="let ext of extensions" class="bagde" [src]="fileTypeService.getIconLinkForExtension(ext)" alt="**"
-         [matTooltip]="ext" matTooltipPosition="below">
+    <img *ngFor="let fileInfo of filesInfo" class="bagde" [src]="fileTypeService.getIconLinkForExtension(fileInfo.extension)" alt="**"
+         [matTooltip]="fileInfo.extension" matTooltipPosition="below" (click)="openDialogWithFileContent(fileInfo)">
     </div><br>
     <div *ngIf="avatarInfoForks.length">
       <span>Fork avatars </span>

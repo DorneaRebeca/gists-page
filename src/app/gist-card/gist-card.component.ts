@@ -3,6 +3,8 @@ import {Gist} from "../model/Gist";
 import {GistFile} from "../model/GistFile";
 import {FileTypeService} from "../service/file-type.service";
 import {GistsApiService} from "../service/gists-api.service";
+import {MatDialog} from "@angular/material/dialog";
+import {FileContentDialogComponent} from "../file-content-dialog/file-content-dialog.component";
 
 @Component({
   selector: 'app-gist-card',
@@ -16,11 +18,12 @@ export class GistCardComponent implements OnInit {
 
   public gistFiles: GistFile[] = [];
 
-  public extensions: string[] = [];
+  public filesInfo: { url: any, extension: any, type: string }[] = [];
 
   public avatarInfoForks: { url: any, username: any }[] = [];
 
-  constructor(public fileTypeService: FileTypeService, private gistsApiService: GistsApiService) { }
+  constructor(public fileTypeService: FileTypeService, private gistsApiService: GistsApiService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.initFiles(this.gist);
@@ -30,7 +33,11 @@ export class GistCardComponent implements OnInit {
   private initFiles(gist?: Gist): void {
     for (let file in this.gist?.files) {
       let fileInfo = this.gist?.files[file];
-      this.extensions.push(fileInfo.filename.split('.').pop());
+      this.filesInfo.push({
+        extension: fileInfo.filename.split('.').pop(),
+        type: fileInfo.type,
+        url: fileInfo.raw_url
+      });
     }
   }
 
@@ -50,6 +57,12 @@ export class GistCardComponent implements OnInit {
         }
       }
     });
+  }
+
+  public openDialogWithFileContent(fileInfo: any): void {
+    this.dialog.open(FileContentDialogComponent, {
+      data: {fileUrl: fileInfo.url}
+      });
   }
 
 }

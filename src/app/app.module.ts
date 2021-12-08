@@ -14,13 +14,16 @@ import {HttpClientModule} from "@angular/common/http";
 import { GistCardComponent } from './gist-card/gist-card.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { FileContentDialogComponent } from './file-content-dialog/file-content-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchGistsComponent,
-    GistCardComponent
+    GistCardComponent,
+    FileContentDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatButtonModule,
     MatInputModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
